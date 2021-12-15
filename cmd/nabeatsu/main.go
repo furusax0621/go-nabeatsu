@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/furusax0621/go-nabeatsu/nabeatsu"
+	"github.com/furusax0621/go-nabeatsu"
 )
 
 func main() {
