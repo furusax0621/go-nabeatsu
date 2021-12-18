@@ -11,6 +11,12 @@
 $ go install github.com/furusax0621/go-nabeatsu/cmd/nabeatsu@latest
 ```
 
+## Usage
+
+```
+$ nabeatsu <number>
+```
+
 ## Related Works
 
 - https://github.com/ivgtr/nabeatsu
