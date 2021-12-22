@@ -28,8 +28,8 @@ func IsFool(s string) bool {
 	return sum%3 == 0
 }
 
-// BuildFoolMessage 3の倍数と3のつく数字のときだけ阿呆になった数字の読み方をします。それ以外のケースではオリジナルの文字列を返します。
-func BuildFoolMessage(s string) string {
+// GetFoolExpression 3の倍数と3のつく数字のときだけ阿呆になった数字の読み方をします。それ以外のケースではオリジナルの文字列を返します。
+func GetFoolExpression(s string) string {
 	if len(s) >= 73 { // 無量大数より上の単位は存在しないので無限大ということにしておく
 		return "ﾑｹﾞﾝﾀﾞｧｲwww"
 	}
@@ -37,9 +37,12 @@ func BuildFoolMessage(s string) string {
 		return s
 	}
 
+	// 最後に草を生やしたい
+	suffix := "www"
+
 	// 10,000未満
 	if len(s) <= 4 {
-		return buildFoolMessageUnder10Thousand(s)
+		return buildFoolMessageUnder10Thousand(s) + suffix
 	}
 	msg := buildFoolMessageUnder10Thousand(s[len(s)-4:])
 	s = s[:len(s)-4]
@@ -56,7 +59,7 @@ func BuildFoolMessage(s string) string {
 		s = s[:offset]
 	}
 
-	return msg
+	return msg + suffix
 }
 
 func buildFoolMessageUnder10Thousand(s string) string {

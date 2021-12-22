@@ -45,7 +45,7 @@ func TestIsFool(t *testing.T) {
 	}
 }
 
-func TestBuildFoolMessage(t *testing.T) {
+func TestGetFoolExpression(t *testing.T) {
 	tests := []struct {
 		name  string
 		input string
@@ -59,57 +59,57 @@ func TestBuildFoolMessage(t *testing.T) {
 		{
 			name:  "阿呆になる数字(1桁)",
 			input: "3",
-			want:  "ｻｧﾝ",
+			want:  "ｻｧﾝwww",
 		},
 		{
 			name:  "阿呆になる数字(2桁)",
 			input: "24",
-			want:  "ﾆｼﾞｭｳﾖﾝ",
+			want:  "ﾆｼﾞｭｳﾖﾝwww",
 		},
 		{
 			name:  "阿呆になる数字(3桁)",
 			input: "489",
-			want:  "ﾖﾝﾋｬｸﾊﾁｼﾞｭｳｷｭｳ",
+			want:  "ﾖﾝﾋｬｸﾊﾁｼﾞｭｳｷｭｳwww",
 		},
 		{
 			name:  "阿呆になる数字(4桁)",
 			input: "6570",
-			want:  "ﾛｸｾﾝｺﾞﾋｬｸﾅﾅｼﾞｭｳ",
+			want:  "ﾛｸｾﾝｺﾞﾋｬｸﾅﾅｼﾞｭｳwww",
 		},
 		{
 			name:  "接頭辞の読み方が変わる場合(千, 百)",
 			input: "3300",
-			want:  "ｻｧﾝｾﾞﾝｻｧﾝﾋﾞｬｸ",
+			want:  "ｻｧﾝｾﾞﾝｻｧﾝﾋﾞｬｸwww",
 		},
 		{
 			name:  "1は発音しない",
 			input: "1110",
-			want:  "ｾﾝﾋｬｸｼﾞｭｳ",
+			want:  "ｾﾝﾋｬｸｼﾞｭｳwww",
 		},
 		{
 			name:  "接頭辞、数字両方の読み方が変わる場合(六百)",
 			input: "600",
-			want:  "ﾛｯﾋﾟｬｸ",
+			want:  "ﾛｯﾋﾟｬｸwww",
 		},
 		{
 			name:  "接頭辞、数字両方の読み方が変わる場合(八千八百)",
 			input: "8802",
-			want:  "ﾊｯｾﾝﾊｯﾋﾟｬｸﾆ",
+			want:  "ﾊｯｾﾝﾊｯﾋﾟｬｸﾆwww",
 		},
 		{
 			name:  "追加の接頭辞がつく数字",
 			input: "865433100001", // 865,433,100,001 (八千六百五十四億 三千三百十万 一)
-			want:  "ﾊｯｾﾝﾛｯﾋﾟｬｸｺﾞｼﾞｭｳﾖﾝｵｸｻｧﾝｾﾞﾝｻｧﾝﾋﾞｬｸｼﾞｭｳﾏﾝｲﾁ",
+			want:  "ﾊｯｾﾝﾛｯﾋﾟｬｸｺﾞｼﾞｭｳﾖﾝｵｸｻｧﾝｾﾞﾝｻｧﾝﾋﾞｬｸｼﾞｭｳﾏﾝｲﾁwww",
 		},
 		{
 			name:  "1,000のときは特別な読み方をする",
 			input: "181001000003", // 181,001,000,003 (一千八百十億 百万 三)
-			want:  "ｲｯｾﾝﾊｯﾋﾟｬｸｼﾞｭｳｵｸﾋｬｸﾏﾝｻｧﾝ",
+			want:  "ｲｯｾﾝﾊｯﾋﾟｬｸｼﾞｭｳｵｸﾋｬｸﾏﾝｻｧﾝwww",
 		},
 		{
 			name:  "ゼロ埋めの接頭辞は省略する",
 			input: "1000000002", // 1,000,000,003 (十億 二)
-			want:  "ｼﾞｭｳｵｸﾆ",
+			want:  "ｼﾞｭｳｵｸﾆwww",
 		},
 
 		{
@@ -120,7 +120,7 @@ func TestBuildFoolMessage(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := BuildFoolMessage(tt.input); got != tt.want {
+			if got := GetFoolExpression(tt.input); got != tt.want {
 				t.Errorf("BuildFoolMessage() = %v, want %v", got, tt.want)
 			}
 		})

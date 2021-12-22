@@ -17,5 +17,5 @@ Usage:
 		)
 		os.Exit(0)
 	}
-	fmt.Println(nabeatsu.BuildFoolMessage(os.Args[1]))
+	fmt.Println(nabeatsu.GetFoolExpression(os.Args[1]))
 }
