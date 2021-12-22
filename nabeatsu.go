@@ -37,9 +37,12 @@ func GetFoolExpression(s string) string {
 		return s
 	}
 
+	// 最後に草を生やしたい
+	suffix := "www"
+
 	// 10,000未満
 	if len(s) <= 4 {
-		return buildFoolMessageUnder10Thousand(s)
+		return buildFoolMessageUnder10Thousand(s) + suffix
 	}
 	msg := buildFoolMessageUnder10Thousand(s[len(s)-4:])
 	s = s[:len(s)-4]
@@ -56,7 +59,7 @@ func GetFoolExpression(s string) string {
 		s = s[:offset]
 	}
 
-	return msg
+	return msg + suffix
 }
 
 func buildFoolMessageUnder10Thousand(s string) string {
