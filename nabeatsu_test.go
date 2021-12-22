@@ -108,7 +108,7 @@ func TestGetFoolExpression(t *testing.T) {
 		},
 		{
 			name:  "ゼロ埋めの接頭辞は省略する",
-			input: "1000000002", // 1,000,000,003 (十億 二)
+			input: "1000000002", // 1,000,000,002 (十億 二)
 			want:  "ｼﾞｭｳｵｸﾆwww",
 		},
 
