@@ -45,7 +45,7 @@ func TestIsFool(t *testing.T) {
 	}
 }
 
-func TestBuildFoolMessage(t *testing.T) {
+func TestGetFoolExpression(t *testing.T) {
 	tests := []struct {
 		name  string
 		input string
@@ -120,7 +120,7 @@ func TestBuildFoolMessage(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := BuildFoolMessage(tt.input); got != tt.want {
+			if got := GetFoolExpression(tt.input); got != tt.want {
 				t.Errorf("BuildFoolMessage() = %v, want %v", got, tt.want)
 			}
 		})
