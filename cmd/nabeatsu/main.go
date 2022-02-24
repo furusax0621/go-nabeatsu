@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"io"
-	"log"
 	"os"
 	"strings"
 	"syscall"
@@ -26,10 +25,11 @@ Usage:
 	if hasPipeData() {
 		stdin, err := io.ReadAll(os.Stdin)
 		if err != nil {
-			log.Fatal("パイプから入力を受け取れませんでした")
+			fmt.Fprintf(os.Stderr, "パイプから入力を受け取れませんでした")
+			os.Exit(1)
 		}
 
-		list := chopAll(strings.Split(string(stdin), "\n"))
+		list := strings.Split(string(stdin), "\n")
 		if list[len(list)-1] == "" {
 			list = list[:len(list)-1]
 		}
@@ -45,21 +45,4 @@ Usage:
 // hasPipeData は、パイプから標準入力を受け取っているかどうかを返す。
 func hasPipeData() bool {
 	return !term.IsTerminal(syscall.Stdin)
-}
-
-// chop は、文字列の末尾から改行コードを削除する。
-func chop(line string) string {
-	if strings.HasSuffix(line, "\n") {
-		return strings.TrimLeft(line, "\n")
-	}
-	return line
-}
-
-// chop は、文字列リストから文字列を取り出し、それら文字列末尾の改行コードを削除する。
-func chopAll(lines []string) []string {
-	var newLines []string
-	for _, v := range lines {
-		newLines = append(newLines, chop(v))
-	}
-	return newLines
 }
