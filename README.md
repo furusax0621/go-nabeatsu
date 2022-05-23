@@ -4,6 +4,7 @@
 
 [![Build Status](https://github.com/furusax0621/go-nabeatsu/workflows/test/badge.svg?branch=main)](https://github.com/furusax0621/go-nabeatsu/actions?query=workflow%3Atest)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/furusax0621/go-nabeatsu/blob/main/LICENSE)
+[![Go Reference](https://pkg.go.dev/badge/github.com/furusax0621/go-nabeatsu.svg)](https://pkg.go.dev/github.com/furusax0621/go-nabeatsu)
 
 ## Installation
 
